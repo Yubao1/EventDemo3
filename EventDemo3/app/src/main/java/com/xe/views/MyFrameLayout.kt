@@ -1,0 +1,39 @@
+package com.xe.views
+
+import android.content.Context
+import android.support.annotation.Nullable
+import android.util.AttributeSet
+import android.util.Log
+import android.view.MotionEvent
+import android.widget.FrameLayout
+import com.xe.eventdemo3.E_Activity
+import com.xe.eventdemo3.F_Activity
+
+/**
+ * Created by 86188 on 2021/7/27.
+ */
+class MyFrameLayout: FrameLayout {
+    constructor(context: Context): super(context) {
+    }
+    constructor(context: Context, @Nullable attrs: AttributeSet): super(context,attrs) {
+    }
+    constructor(context: Context, @Nullable attrs: AttributeSet, defStyleAttr: Int): super(context,attrs,defStyleAttr) {
+    }
+
+    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
+        when (ev?.action) {
+            MotionEvent.ACTION_DOWN -> {
+                Log.d(F_Activity.TAG,"--MyFrameLayout--onInterceptTouchEvent--ACTION_DOWN")
+                super.onInterceptTouchEvent(ev)
+                return false
+            }
+            MotionEvent.ACTION_MOVE -> {
+                Log.d(F_Activity.TAG,"--MyFrameLayout--onInterceptTouchEvent--ACTION_MOVE")
+            }
+            MotionEvent.ACTION_UP -> {
+                Log.d(F_Activity.TAG,"--MyFrameLayout--onInterceptTouchEvent--ACTION_UP")
+            }
+        }
+        return true
+    }
+}
